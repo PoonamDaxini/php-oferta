@@ -5,10 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$db_host_name = 'ec2-50-19-236-178.compute-1.amazonaws.com';
-$db_name = 'd6o4ijljl9coa7';
-$db_user_name = 'pytklaupmguzcj';
-$db_password = 'ZObtwyjqbBenFCApdQsuN2ysax';
+$db_host_name = 'localhost';
+$db_name = 'oferta';
+$db_user_name = 'postgres';
+$db_password = 'thakkar';
 $dbhandle = pgconnect($db_host_name, $db_user_name, $db_password, $db_name);
 //var_dump($dbhandle);
 
