@@ -7,8 +7,11 @@
  */
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-
-$dbhandle = pgconnect('localhost', 'postgres', 'thakkar');
+$db_host_name = 'ec2-50-19-236-178.compute-1.amazonaws.com';
+$db_name = 'd6o4ijljl9coa7';
+$db_user_name = 'pytklaupmguzcj';
+$db_password = 'ZObtwyjqbBenFCApdQsuN2ysax';
+$dbhandle = pgconnect($db_host_name, $db_user_name, $db_password, $db_name);
 //var_dump($dbhandle);
 
 if (isset($_REQUEST['ajax'])) {
@@ -37,14 +40,16 @@ if (isset($_REQUEST['ajax'])) {
         update_user($dbhandle, 0, $user_id, 0, $player[0]['previous_user_id'], 0);
     } else if (isset($_REQUEST['action'])) {
 
-        $dbhandle = pgconnect('localhost', 'postgres', 'thakkar');
+//        $dbhandle = pgconnect('localhost', 'postgres', 'thakkar');
+        $dbhandle = pgconnect($db_host_name, $db_user_name, $db_password, $db_name);
         $player = get_player($dbhandle);
         $user_id = trim($_REQUEST['user_id']);
         $prev_user_id = trim($_REQUEST['prev_user_id']);
         set_player($dbhandle, $user_id, $prev_user_id, 2);
         echo json_encode($player);
     } else {
-        $dbhandle = pgconnect('localhost', 'postgres', 'thakkar');
+//        $dbhandle = pgconnect('localhost', 'postgres', 'thakkar');
+        $dbhandle = pgconnect($db_host_name, $db_user_name, $db_password, $db_name);
         $bid_value = trim($_REQUEST['bid_value']);
         $user_id = trim($_REQUEST['user_id']);
         $prev_user_id = trim($_REQUEST['previous_user_id']);
@@ -92,9 +97,9 @@ if (isset($_REQUEST['ajax'])) {
     include_once 'auction.tpl.php';
 }
 
-function pgconnect($host, $username, $password) {
+function pgconnect($host, $username, $password, $dbname) {
     $tries = 0;
-    if (!($handle = pg_connect("host={$host} user={$username} password={$password} dbname=oferta")) && $tries++ < 3) {
+    if (!($handle = pg_connect("host={$host} user={$username} password={$password} dbname={$dbname}")) && $tries++ < 3) {
         // $this->errorString[] = __FILE__ . "::" . __FUNCTION__ . "::" . __LINE__ . "::$dbHost, $dbUser, $dbPass::" . mysqli_error($this->link);
     }
     if ($tries > 2) {
