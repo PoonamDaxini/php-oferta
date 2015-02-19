@@ -5,8 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
 $db_host_name = 'ec2-50-19-236-178.compute-1.amazonaws.com';
 $db_name = 'd6o4ijljl9coa7';
 $db_user_name = 'pytklaupmguzcj';

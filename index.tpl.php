@@ -37,7 +37,7 @@
             <div id="sidebar" class="col-md-4">
                 <table class="table  table-bordered">
                     <tr>
-                        <th colspan="4" class="text-center"><a href="auction.php?teamlist=1" target="_blank"> Team Listing </a></th>
+                        <th colspan="4" class="text-center"><a href="index.php?teamlist=1" target="_blank"> Team Listing </a></th>
                     </tr>
                     <tr>	
                         <th rowspan="2">
