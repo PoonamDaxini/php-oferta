@@ -4,8 +4,11 @@
     <head>
         <title>Oferta</title>
         <link rel="stylesheet" href="/css/bootstrap.css"/>
+        <LINK REL="StyleSheet" HREF="/css/bootstrap-select.min.css" TYPE="text/css" MEDIA="screen">
         <script src="/js/jquery.js"></script>
         <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-select.js" type="text/javascript"></script>
+
         <style>
             .top5 { margin-top:5px; }
         </style>
@@ -68,9 +71,9 @@
 
                 <div class="row top5" id="player" ng-controller="playerController">
                     <div class="col-md-12 top5">
-                        <button class="btn btn-danger col-xs-3" ng-click="reset()" > Sold :: <span id="sold_pl"><?php echo $solded; ?></span></button>
-                        <button class="btn btn-info col-xs-3" ng-click="reset()" > Unsold :: <span id="unsold_pl"><?php echo $unsold; ?> </span></button>
-                        <button class="btn btn-default col-xs-3" ng-click="reset()" > To be Auctioned :: <span id="tobesold_pl"><?php echo $tobesold; ?> </span></button>
+                        <button class="btn btn-danger col-xs-2" ng-click="reset()" > Sold :: <span id="sold_pl"><?php echo $solded; ?></span></button>
+                        <button class="btn btn-info col-xs-2 col-xs-offset-1" ng-click="reset()" > Unsold :: <span id="unsold_pl"><?php echo $unsold; ?> </span></button>
+                        <button class="btn btn-default col-xs-3 col-xs-offset-1" ng-click="reset()" > To be Auctioned :: <span id="tobesold_pl"><?php echo $tobesold; ?> </span></button>
 
                     </div>
 
@@ -121,10 +124,10 @@
                     <div> All Players Sold</div>
                 <?php } ?>
 
-                <div class="row">
+                <div class="row top5">
 
-                    <div class="col-md-3">
-                        <select id="user_captain_id" name="user_captain_id">
+                    <div class="col-md-4">
+                        <select id="user_captain_id" class="selectpicker" name="user_captain_id">
                             <?php foreach ($captain as $cap) {
                                 ?>
                                 <option value="<?php echo $cap['id']; ?>"><?php echo $cap['name']; ?></option>
@@ -132,10 +135,10 @@
                         </select>
 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="text" id="bid_value" name="bid_value"/>                        
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5 col-md-offset-1">
                         <a href="/auction/sold" data-remote="true" id="sold" class="btn btn-primary ">Sold</a> 
                         <input type="hidden" name="previous_user_id" id="previous_user_id" value="<?php echo $player[0]['id']; ?>"/>
                         <a href="/auction/previous" data-remote="true" id="previous" class="btn btn-success ">Previous</a>                        
@@ -176,7 +179,10 @@
                                     }
                                 }
 </script-->
-<script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.selectpicker').selectpicker();
+});
 
 $('#previous').click(function (event) {    
     event.preventDefault();

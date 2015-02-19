@@ -94,7 +94,7 @@ if (isset($_REQUEST['ajax'])) {
             }
         }
     }
-    include_once 'auction.tpl.php';
+    include_once 'index.tpl.php';
 }
 
 function pgconnect($host, $username, $password, $dbname) {
